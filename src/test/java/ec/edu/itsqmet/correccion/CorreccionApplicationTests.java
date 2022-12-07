@@ -6,6 +6,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import ec.edu.itsqmet.correccion.dto.BirdCategoryDTO;
 import ec.edu.itsqmet.correccion.repository.IBirdCategoryRepository;
+import ec.edu.itsqmet.correccion.singleton.Singleton;
 
 @SpringBootTest
 class CorreccionApplicationTests {
@@ -14,8 +15,7 @@ class CorreccionApplicationTests {
 
 	@Test
 	void contextLoads() {
-		birdCategoryRepository.findAll();
-		for (BirdCategoryDTO iterable_element : birdCategoryRepository.findAll()) {
+		for (BirdCategoryDTO iterable_element : Singleton.getBirds(birdCategoryRepository)) {
 			System.out.println("ID:" + iterable_element.getId() + ", TYPE:" + iterable_element.getName());
 		}
 	}
